@@ -13,6 +13,7 @@ $(document).ready(function(){
 	//animate_fadein();
 	aos_skills();
 	main_service();
+	sendmail();
 
 });
 function get_time(){
@@ -35,6 +36,8 @@ function get_time(){
 	},	
 	refresh);
 }
+
+
 
 
 
@@ -332,6 +335,46 @@ function main_service(){
 		$("."+$target).slideToggle();
 	});
 }
+
+
+function send_mail(){
+	$(".service_readme").click(function(){
+		$elem = $(this);
+		$target = $elem.attr('target');
+
+		if($elem.hasClass('readless')){
+			$elem.removeClass('readless');
+			$elem.find('span').html('More <i class="fa fa-arrow-right">');
+
+		}else{
+			$elem.addClass('readless');
+			$elem.find('span').html('Less <i class="fa fa-arrow-down">');
+		}
+
+		$("."+$target).slideToggle();
+	});
+}
+
+
+function sendmail(){
+	$("#sendmail").click(function(){
+		// Simple recipient-only email
+		//window.location.href = "mailto:arcma@yahoo.com";
+
+		// Email with Subject and Body
+		const myemail = "arcma@yahoo.com";
+		const name = $('#name').val();
+		const subject = "Portfolio Email";
+		const body = "name:"+name+"<br>"+$('#comment').val();
+
+		window.location.href = `mailto:${myemail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+	});
+
+}
+
+
+
 
 
 
